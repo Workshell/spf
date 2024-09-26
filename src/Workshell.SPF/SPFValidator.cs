@@ -33,21 +33,15 @@ public sealed class SPFValidator
 
     private readonly ILookupClient _dnsClient;
 
+    public SPFValidator()
+        : this(new LookupClient())
+    {
+    }
+
     public SPFValidator(ILookupClient dnsClient)
     {
         _dnsClient = dnsClient ?? throw new ArgumentNullException(nameof(dnsClient));
     }
-
-    #region Static Methods
-
-    public static SPFValidator Create(ILookupClient? dnsClient = null)
-    {
-        var validator = new SPFValidator(dnsClient ?? new LookupClient());
-
-        return validator;
-    }
-
-    #endregion
 
     #region Methods
 
