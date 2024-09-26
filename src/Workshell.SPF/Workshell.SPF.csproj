@@ -19,6 +19,7 @@
 	<PackageProjectUrl>https://github.com/Workshell/spf</PackageProjectUrl>
 	<PackageTags>workshell smtp spf spam</PackageTags>
 	<PackageLicenseFile>license.txt</PackageLicenseFile>
+	<PackageIconUrl>https://img.workshell.co.uk/logo_128.png</PackageIconUrl>
 	<IconUrl>https://img.workshell.co.uk/logo_128.png</IconUrl>
 	<Copyright>Workshell Ltd</Copyright>
 	<Authors>Workshell Ltd</Authors>
