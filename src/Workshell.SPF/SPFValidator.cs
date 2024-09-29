@@ -128,12 +128,14 @@ public sealed class SPFValidator
                             Value = value
                         };
 
-                        if (Error is not null)
+                        Error?.Invoke(this, args);
+
+                        if (args.Handled)
                         {
-                            Error.Invoke(this, args);
+                            return SPFResult.TempError;
                         }
 
-                        return SPFResult.TempError;
+                        throw;
                     }
                 }
                 else if ((value.StartsWith("ip4:", StringComparison.OrdinalIgnoreCase) || value.StartsWith("ip6:", StringComparison.OrdinalIgnoreCase)) && !hasAll)
@@ -168,12 +170,14 @@ public sealed class SPFValidator
                             Value = value
                         };
 
-                        if (Error is not null)
+                        Error?.Invoke(this, args);
+
+                        if (args.Handled)
                         {
-                            Error.Invoke(this, args);
+                            return SPFResult.TempError;
                         }
 
-                        return SPFResult.TempError;
+                        throw;
                     }
                 }
                 else if (value.Equals("ptr", StringComparison.OrdinalIgnoreCase) && !hasAll)
@@ -207,12 +211,14 @@ public sealed class SPFValidator
                             Value = value
                         };
 
-                        if (Error is not null)
+                        Error?.Invoke(this, args);
+
+                        if (args.Handled)
                         {
-                            Error.Invoke(this, args);
+                            return SPFResult.TempError;
                         }
 
-                        return SPFResult.TempError;
+                        throw;
                     }
                 }
                 else if (value.StartsWith("include:", StringComparison.OrdinalIgnoreCase) && !hasAll)
@@ -252,12 +258,14 @@ public sealed class SPFValidator
                             Value = value
                         };
 
-                        if (Error is not null)
+                        Error?.Invoke(this, args);
+
+                        if (args.Handled)
                         {
-                            Error.Invoke(this, args);
+                            return SPFResult.TempError;
                         }
 
-                        return SPFResult.TempError;
+                        throw;
                     }
                 }
                 else if (value.Equals("all", StringComparison.OrdinalIgnoreCase) && !hasAll)
@@ -310,12 +318,14 @@ public sealed class SPFValidator
                     Value = $"redirect={redirect}"
                 };
 
-                if (Error is not null)
+                Error?.Invoke(this, args);
+
+                if (args.Handled)
                 {
-                    Error.Invoke(this, args);
+                    return SPFResult.TempError;
                 }
 
-                return SPFResult.TempError;
+                throw;
             }
         }
 

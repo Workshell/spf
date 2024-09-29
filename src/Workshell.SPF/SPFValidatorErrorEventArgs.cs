@@ -11,11 +11,13 @@ public sealed class SPFValidatorErrorEventArgs : EventArgs
     public SPFValidatorErrorEventArgs(Exception exception)
     {
         Exception = exception;
+        Handled = false;
     }
 
     #region Properties
 
     public Exception Exception { get; }
+    public bool Handled { get; set; }
     public string? Domain { get; internal set; }
     public string? Value { get; internal set; }
 
